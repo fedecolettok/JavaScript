@@ -1,24 +1,86 @@
-// concat()
-var array1 = ['Cecilia', 'Fatima']
-var array2 = ['Gottardini', 'Flores']
-console.log(array1.concat(array2));
+/*
+   every()
 
-var arr1 = ["Cecilie", "Lone"];
-var arr2 = ["Emil", "Tobias", "Linus"];
-var arr3 = ["Robin"];
-console.log(arr2.concat(arr3, arr1));
+   DEFINITION AND USAGE
+   - The every() method checks a function for each array element.
+   - The every() method returns true if the function returns true for all elements.
+   - The every() method returns false if the function returns false for at least one element.
+   - The every() method doesn't execute the function for empty elements.
+   - The every() method doesn't change the original array.
 
-var arr1 = [1, 2, [3, 4]];
-var arr2 = [[5, 6], 7, 8];
-console.log(arr1.concat(arr2));
+   SYNTAX
+   array.every(function(currentValue, index, arr), thisValue
 
-// constructor
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
-console.log(fruits.constructor);
+   PARAMETERS
+   Parameter   |  Description
+---------------|-------------------
+function       |  (R) A function to be run for each array's element
+currentValue   |  (R) The value of the current element
+index          |  (O) The index of the current element
+arr            |  (O) The array of the current element
+thisValue      |  (O) Default = undefined. A value passed to the function as its `this` value
 
-// copyWithin()
-var nums = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-// Copia los elementos desde la posición 0 (start) hasta la posición 3 (end) ['a', 'b', 'c'] en la posición 2 (target) del arreglo.
-console.log(nums.copyWithin(2, 0, 3));
-// Copia los elementos desde la posición 2 (start) hasta la posición 5 (end) ['c', 'd', 'e'] en la posición 0 (target) del arreglo.
-console.log(nums.copyWithin(0, 3, 5));
+   RETURN VALUE
+   Type        |  Description
+---------------|-------------------
+A boolean      |  `true` if all elements pass the test, otherwise `false`
+
+*/
+
+// Check if all values in `ages[]` are > 18
+const ages = [32, 33, 26, 40]
+
+console.log(ages.every(checkAge));
+
+function checkAge(age) {
+   return age > 18   
+}
+
+
+// Check if all answers are the same
+const survey = [
+   {name: "Steve", answer: "Yes"},
+   {name: "Jessica", answer: "Yes"},
+   {name: "Peter", answer: "Yes"},
+   {name: "Sam", answer: "No"}
+];
+
+let isSameAnswer = survey.every(function(surv, index, array) {
+   if (index === 0) {
+      return true;
+   } else {
+      return (surv.answer === array[index - 1].answer)
+   }
+})
+
+
+
+const students = [
+   {name: 'Federico',
+   courses: {
+      matemáticas: 86,
+      inglés: 98,
+      historia: 74
+   }},
+   {name: 'Trinidad',
+   courses: {
+      matemáticas: 97,
+      inglés: 81,
+      historia: 80
+   }},
+   {name: 'Marianela',
+   courses: {
+      matemáticas: 84,
+      inglés: 94,
+      historia: 8
+   }},
+];
+
+let allStudentsPassed = students.every(function(student, index, array) {
+   let courses = Object.values(student.courses);
+   return courses.every(function(courseGrade) {
+      return courseGrade > 60
+   });
+});
+
+console.log(allStudentsPassed);

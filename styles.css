@@ -1,0 +1,12 @@
+* {
+   font-family: 'Mulish', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Open Sans', sans-serif;
+}
+table thead {
+   font-size: 15px;
+}
+table tbody {
+   font-size: 0.9rem;
+}
